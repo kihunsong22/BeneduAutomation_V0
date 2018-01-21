@@ -15,7 +15,7 @@ if sys.platform == "win32":
     base = "console"
 
 setup(  name = "BenEduAutomatedScript",
-    version = "1.0.2",
-    description = "Automate BenEdu!",
+    version = "1.1.0",
+    description = "Benedu automated",
     options = {"build_exe": build_exe_options},
-    executables = [Executable("Source.py", base = base)])
+    executables = [Executable("Main.py", base = base)])
