@@ -18,4 +18,4 @@ setup(  name = "BenEduAutomatedScript",
     version = "1.1.0",
     description = "Benedu automated",
     options = {"build_exe": build_exe_options},
-    executables = [Executable("Main.py", base = base)])
+    executables = [Executable("main.py", base = base)])
