@@ -6,7 +6,7 @@ try:
 except ImportError:
     from PIL import Image
 
-import os, time, pytesseract
+import os, time, pytesseract, PyQt5
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
