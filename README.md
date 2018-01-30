@@ -1,6 +1,6 @@
 ## 베네듀 자동화 스크립트
 
-### Windows-Executable 폴더 안에 exe로 추출하여 파이썬과 기타 모듈의 설치 없이도 사용이 가능합니다.
+#### Windows-Executable 폴더 안에 exe로 추출되어 있으므로 파이썬과 기타 모듈의 설치 없이도 사용이 가능합니다.
 
 #### TDL
 	> PyQT - password암호화, github 링크
