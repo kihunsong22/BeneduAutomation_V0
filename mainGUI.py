@@ -1,11 +1,12 @@
-# try:
-#     import Image
-# except ImportError:
-#     from PIL import Image
+# -*- coding: utf-8 -*-
 
-import sys, os, time
+# Form implementation generated from reading ui file 'main.ui'
+#
+# Created by: PyQt5 UI code generator 5.10
+#
+# WARNING! All changes made in this file will be lost!
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QLineEdit
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -57,7 +58,6 @@ class Ui_MainWindow(object):
         self.lineEdit_password.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.lineEdit_password.setAutoFillBackground(False)
         self.lineEdit_password.setObjectName("lineEdit_password")
-        self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.Password)
         self.label_Password = QtWidgets.QLabel(self.settingBox)
         self.label_Password.setGeometry(QtCore.QRect(13, 70, 91, 20))
         self.label_Password.setObjectName("label_Password")
@@ -93,10 +93,12 @@ class Ui_MainWindow(object):
         self.label_Delay.setText(_translate("MainWindow", "Delay (sec)"))
 
 
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
 
-app = QtWidgets.QApplication(sys.argv)
-MainWindow = QtWidgets.QMainWindow()
-ui = Ui_MainWindow()
-ui.setupUi(MainWindow)
-MainWindow.show()
-sys.exit(app.exec_())
