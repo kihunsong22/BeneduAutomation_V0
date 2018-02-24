@@ -8,7 +8,7 @@ try:
 except ImportError:
     from PIL import Image
 
-import os, time, pytesseract, PyQt5
+import os, time, pytesseract
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -282,7 +282,7 @@ def bypassocr():
     time.sleep(0.5)
     # -------------------------스크린샷 저장 후 OCR 처리.입력
 
-    WebDriverWait(driver, 10).until(
+    WebDriverWait(driver, 8).until(
         EC.visibility_of_element_located((By.XPATH, '//*[@id="body_imgMacro"]')))
 
     driver.get_screenshot_as_file('screenshots/captcha.png')

@@ -93,7 +93,6 @@ class Ui_MainWindow(object):
         self.label_Delay.setText(_translate("MainWindow", "Delay (sec)"))
 
 
-
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
 ui = Ui_MainWindow()
