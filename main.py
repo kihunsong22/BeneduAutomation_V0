@@ -290,9 +290,9 @@ def bypassocr():
     pilimg = Image.open('screenshots/captcha.png')
     time.sleep(0.2)
     pilimg.size = 1920, 1080
-    pilimg.crop((850, 340, 1050, 400)).save('screenshots/captcha1.png')
+    pilimg.crop((850, 340, 1050, 400)).save('screenshots/captcha.png')
 
-    captcha = pytesseract.image_to_string(Image.open('screenshots/captcha1.png'))
+    captcha = pytesseract.image_to_string(Image.open('screenshots/captcha.png'))
     captcha = captcha.replace(' ', '')
 
     time.sleep(0.1)
