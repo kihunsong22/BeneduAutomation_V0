@@ -1,7 +1,6 @@
-# BenEdu Test Sheets should be have word TEST in capital    ex) TEST2
+# BenEdu test sheets for automation should contain 'TEST' in capital    ex) TEST2
 #
 # pyuic5 -x main.ui -o mainGUI.py
-#
 
 try:
     import Image
