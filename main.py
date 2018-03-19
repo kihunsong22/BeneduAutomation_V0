@@ -108,28 +108,45 @@ def createtestsheet(loop, value):
 
 def solveTest(loop, value, delay):
     # --------------------------------------------------manipulate StartTime
-    delay = 9020
     curtime = str(datetime.now())
-    dehour = delay/3600
-    demin = (delay-dehour*3600)/60
-    desec = ((delay-dehour*3600)-demin*60)
+    dehour = int(delay / 3600)
+    demin = int((delay - dehour * 3600) / 60)
+    desec = int(((delay - dehour * 3600) - demin * 60))
+
+    # print(dehour)
+    # print(demin)
+    # print(desec)
 
     curdate = curtime.split()[0]
     curtime = curtime.split()[1]
     curtime = curtime.split(":")
 
-    curtime[2] += desec
-    while int(curtime[2]) > 60:
-        curtime[1] += 1
-        curtime[2] -= 60
+    curtime[0] = int(float(curtime[0]))
+    curtime[1] = int(float(curtime[1]))
+    curtime[2] = int(float(curtime[2]))
 
-    curtime[1] += demin
-    while int(curtime[1]) > 60:
+    # print("INIT : " + str(curtime))
+
+    curtime[2] -= desec  # 초단위 추가
+    while int(curtime[2]) < 0:
+        curtime[1] -= 1
+        curtime[2] += 60
+
+    curtime[1] -= demin  # 분단위 추가
+    while int(curtime[1]) < 0:
+        curtime[0] -= 1
+        curtime[1] += 60
+
+    curtime[0] -= dehour  # 시단위 추가
+    while int(curtime[0]) < 0:
+        # 날짜를 다음으로 넘겨야 하는데 너무 귀찮아서 안했어
         curtime[0] += 1
-        curtime[1] -= 60
 
+    restime = str(curtime[0]) + ":" + str(curtime[1]) + ":" + str(curtime[2]) + "  "
+    # print("RES : " + str(restime))
+    # IBU_BEGIN_DATE 는 curdate, IBU_BEGIN_TIME은 restime 변수에 저장되어 있음
 
-
+    # driver.execute_script("IBU_BEGIN_TIME = " + str(restime))
     # --------------------------------------------------HTML Parsing
     prob1 = str('987')
     prob2 = str('987')
@@ -291,11 +308,8 @@ def solveTest(loop, value, delay):
     print(num5.num)
 
     # delay = delay + random.random(-3, 3)
-    IBU_TIME = driver.execute_script("return(IBU_BEGIN_TIME)")
-    print(IBU_TIME)
-    IBU_TIME = driver.execute_script("IBU_BEGIN_TIME")
-    print(IBU_TIME)
-    time.sleep(delay)
+    # time.sleep(delay)
+    driver.execute_script("IBU_BEGIN_TIME = \"" + str(restime) + "\"")
     bypassocr()
 
     return 0
