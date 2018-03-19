@@ -9,6 +9,8 @@ except ImportError:
 
 import os, time, pytesseract
 
+# from time import gmtime, strftime
+from datetime import datetime
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -105,6 +107,29 @@ def createtestsheet(loop, value):
 
 
 def solveTest(loop, value, delay):
+    # --------------------------------------------------manipulate StartTime
+    delay = 9020
+    curtime = str(datetime.now())
+    dehour = delay/3600
+    demin = (delay-dehour*3600)/60
+    desec = ((delay-dehour*3600)-demin*60)
+
+    curdate = curtime.split()[0]
+    curtime = curtime.split()[1]
+    curtime = curtime.split(":")
+
+    curtime[2] += desec
+    while int(curtime[2]) > 60:
+        curtime[1] += 1
+        curtime[2] -= 60
+
+    curtime[1] += demin
+    while int(curtime[1]) > 60:
+        curtime[0] += 1
+        curtime[1] -= 60
+
+
+
     # --------------------------------------------------HTML Parsing
     prob1 = str('987')
     prob2 = str('987')
@@ -266,6 +291,10 @@ def solveTest(loop, value, delay):
     print(num5.num)
 
     # delay = delay + random.random(-3, 3)
+    IBU_TIME = driver.execute_script("return(IBU_BEGIN_TIME)")
+    print(IBU_TIME)
+    IBU_TIME = driver.execute_script("IBU_BEGIN_TIME")
+    print(IBU_TIME)
     time.sleep(delay)
     bypassocr()
 
@@ -575,9 +604,9 @@ while 1:
                 driver.find_element_by_xpath('//*[text()[contains(.,\'TEST\')]]').click()
                 continue
             elif solveResult == 0:
-                print('DEBUG: SOLVE SUCCESS')
+                # print('DEBUG: SOLVE SUCCESS')
                 value += 1
-                print('qwer = ' + str(value))
+                # print('qwer = ' + str(value))
                 revalue = 1
                 driver.get(learnUrl)
                 time.sleep(0.2)
